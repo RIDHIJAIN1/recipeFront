@@ -1,14 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import '../src/styles/app.scss'
-import Recipe from './Recipe.jsx'
-import Single from './Single.jsx'
-import Login from './Login.jsx'
-import Signup from './Signup.jsx'
+// import ReactDOM from 'react-dom';
+import {createRoot} from 'react-dom/client'
+import App from './App'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+export const server = "http://localhost:4000/api/v1"
+
+const root =createRoot(document.getElementById('root'));
+
+const rootElement=(
   <React.StrictMode>
-    <Login />
-  </React.StrictMode>,
-)
+    <App/>
+  </React.StrictMode>
+
+);
+
+root.render(rootElement);
