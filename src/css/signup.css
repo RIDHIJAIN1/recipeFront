@@ -1,17 +1,22 @@
-body {
+/* body {
     background-image: url(./images/ella-olsson-oPBjWBCcAEo-unsplash\ \(1\).jpg);
    background-repeat: no-repeat;
    background-size: cover;
-}
+} */
 
-.container {
+.signup-container {
     width: 300px;
-    padding: 16px;
+    padding: 16px 16px 5px 16px;
     background-color: #fff;
     margin: 0 auto;
     margin-top: 100px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.success-button{
+    color: white !important;
+    width: 100%;
 }
 
 h2 {
@@ -33,7 +38,7 @@ input[type="text"], input[type="email"], input[type="password"] {
     margin-bottom: 16px;
 }
 
-.signup-container a{
+.signup-containers a{
     text-decoration: none;
     color: #45a049;
 }

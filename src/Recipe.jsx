@@ -1,27 +1,18 @@
-import React from 'react'
-import  'bootstrap/dist/css/bootstrap.min.css'
-import './css/main.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
-import image5 from './images/download (1).jpg'
+import React from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/main.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import image5 from './images/download (1).jpg';
+import Navbar from './Navbar';
 
 
 const Recipe = () => {
   return (
     <div>
-      <header id="header"><div className="logo"><a href="index.html"></a></div>
-				<a href="#menu">Menu</a>
-			</header>
-            <nav id="menu"><ul className="links"><li><a href="index.html">Home</a></li>
-					<li><a href="Recipe.html">Recipe</a></li>
-					<li><a href="Login.html">Login</a></li>
-				</ul></nav>
-                <section id="One" className="wrapper style3"><div className="inner">
-					<header className="align-center"><p>FlavorFusion</p>
-						<h2>RECIPES</h2>
-					</header></div>
-			</section>
+      <Navbar/>
             <section id="two" className="wrapper style2">
-				<div className="container">
+				<div className="container-fluid">
 					<div className="row">
 						<div className="col-md-4 col-sm-6 col-xs-12">
 							<div className="card" style={{}}>

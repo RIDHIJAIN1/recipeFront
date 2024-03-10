@@ -1,0 +1,33 @@
+/* Navbar.css */
+
+/* Customize navbar brand */
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: auto; 
+  }
+  
+  .navbar-nav{
+    margin-left: auto;
+  }
+  /* Customize navbar links */
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Active link styling */
+  .navbar-nav .nav-item.active .nav-link {
+    color: #ffffff; /* Change color as needed */
+    background-color: #007bff; /* Change color as needed */
+    border-radius: 0.25rem;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    /* Center-align navbar brand */
+    .navbar-brand {
+      margin: 0 auto;
+    }
+  }
+  

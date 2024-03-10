@@ -1787,7 +1787,7 @@ textarea {
 }
 
 a {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:hover {
@@ -1941,7 +1941,7 @@ textarea {
 }
 
 a {
-  color: #8a4680;
+  color: #4caf50;
 }
 
 strong,
@@ -4154,10 +4154,29 @@ body.subpage {
 /* Banner */
 
 .banner {
-  background-color: #8a4680;
+  /* background-color: #8a4680; */
+  background: url(../images/tamanna.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   color: #e2d1df;
-  padding: 8em 0;
+  opacity: 0.9;
+
   position: relative;
+}
+
+.content h1 {
+  color: black;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.content{
+  padding-top: 100px;
+}
+
+.content h2{
+  font-size: 40px;
+  color: black;
 }
 
 .banner input,
@@ -4175,14 +4194,7 @@ body.subpage {
   color: #ffffff;
 }
 
-.banner h1,
-.banner h2,
-.banner h3,
-.banner h4,
-.banner h5,
-.banner h6 {
-  color: #ffffff;
-}
+
 
 .banner blockquote {
   border-left-color: rgba(255, 255, 255, 0.25);
@@ -4510,3 +4522,30 @@ body.is-mobile .banner > article {
     text-align: center;
   }
 }
+
+
+.container-fluid{
+  padding:  20px 100px 20px 100px;
+}
+
+.footer-container{
+  display: flex;
+  text-align: center;
+  color: white;
+  margin: auto;
+  width: 100px;
+}
+.copyright{
+  text-align: center;
+}
+.footer-container ul{
+  text-align: center;
+  margin: auto;
+  color: white;
+}
+.footer-container li{
+  margin: 10px;
+  font-size: 30px;
+  color: white;
+}
+
