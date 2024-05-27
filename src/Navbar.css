@@ -24,10 +24,10 @@
   }
   
   /* Responsive adjustments */
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
     /* Center-align navbar brand */
     .navbar-brand {
-      margin: 0 auto;
+      margin:  auto;
     }
   }
   

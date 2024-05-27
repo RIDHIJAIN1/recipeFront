@@ -10,6 +10,10 @@
 
 }
 
+.recipe-container h3{
+    text-align: center;
+}
+
 .description h3{
     padding: 20px 0px 20px 0px;
     text-align: center;
@@ -21,9 +25,10 @@
     font-weight: 500;
 }
 .recipe-image{
-    width: 600px;
+    width: 400px;
     text-align: center;
     margin: auto;
+    padding: 30px;
     
     
 }

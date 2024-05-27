@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Import your custom CSS file
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Context, server } from './main';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
+
+  const logOutHandler = async(e) => {
+    e.preventDefault();
+   setLoading(true)
+  try{
+    await axios.get(`${server}/users/logout`,{
+      withCredentials : true,
+    }
+    );
+    
+    toast.success("Logged out successfully");
+    setIsAuthenticated(false);
+    setLoading(false);
+   
+  }catch(error){
+    
+    toast.error("Some Error");
+    console.log(error);
+    setIsAuthenticated(true);
+    setLoading(false);
+  }
+  }
+
+  const {isAuthenticated ,setIsAuthenticated , loading,setLoading}= useContext(Context);
+
+  // console.log(isAuthenticated);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-tranparent">
       <div className="container">
@@ -19,9 +49,14 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/recipe">RECIPE</Link>
             </li>
-            <li className="nav-item">
+
+            {
+              
+              isAuthenticated ?  (<button onClick={logOutHandler}className='nav-link'disabled={loading}>LOGOUT</button>):( <li className="nav-item">
               <Link className="nav-link" to="/login">LOGIN</Link>
-            </li>
+            </li>)
+            }
+           
             <li className="nav-item">
               <Link className="nav-link" to="/admin">ADMIN</Link>
             </li>

@@ -56,3 +56,27 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #45a049;
 }
+
+.crud-buttons {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    color: #f2f2f2;
+    
+
+}
+
+.crud-buttons button{
+    width: 200px;
+    background-color: #4CAF50;
+    color: white !important;
+    margin: 20px;
+}
+
+.recipe-data{
+  
+    padding: 30px;
+    background-color: #ccc;
+  
+}

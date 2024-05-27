@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import  'bootstrap/dist/css/bootstrap.min.css';
 import toast from "react-hot-toast";
 import axios from "axios";
 // import './css/main.css';
 import 'bootstrap/dist/js/bootstrap.bundle';
 import './css/signup.css'
-import { Link } from 'react-router-dom';
-import { server } from './main';
-
-
+import { Link, Navigate } from 'react-router-dom';
+import { Context, server } from './main';
+import Navbar from './Navbar';
 
 
 const Signup = () => {
@@ -17,10 +16,12 @@ const [name,setName ] = useState('');
 const [email,setEmail ] = useState('');
 const [password,setPassword ] = useState('');
 const [confirmPassword,setConfirmPassword ] = useState('');
+const {isAuthenticated , setIsAuthenticated,loading , setLoading} = useContext(Context);
 
 
 
 const submitHandler = async(e) => {
+  setLoading(true);
   e.preventDefault();
   console.log(name,email,password);
 
@@ -40,22 +41,31 @@ try{
     withCredentials : true,
   }
   );
-  
-  toast.success(data.message)
+ 
 
-  setTimeout(()=>{
-    window.location.href = "/";
-  },2000)
+  toast.success(data.message);
+  setIsAuthenticated(true);
+  setLoading(false);
+
+
+
  
 }catch(error){
   
   toast.error("Some Error")
   console.log(error)
+  setIsAuthenticated(false)
+  setLoading(false);
 }
 }
 
+if(isAuthenticated) return <Navigate to = {"/"} />
+
+
   return (
+  
     <div> 
+      <Navbar/>
       <div className="signup-container">
         <h2>Signup</h2>
         <form action="/signup" method="post"onSubmit={submitHandler}>

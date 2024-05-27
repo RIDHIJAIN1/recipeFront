@@ -2834,7 +2834,7 @@ table.alt tbody tr td {
 /* Wrapper */
 
 .wrapper {
-  padding: 6rem 0 4rem 0;
+  padding: 4rem 0 4rem 0;
   position: relative;
   margin: 0;
 }
@@ -4486,7 +4486,17 @@ body.is-mobile .banner > article {
 }
 
 .card {
-  margin: auto !important;
+  margin: 20px;
+}
+.card-image{
+ width: 100%;
+}
+
+.card-image img{
+  height: 300px;
+}
+.card-text-desc{
+  white-space: pre-line;
 }
 
 .navbar {
@@ -4528,24 +4538,20 @@ body.is-mobile .banner > article {
   padding:  20px 100px 20px 100px;
 }
 
-.footer-container{
-  display: flex;
-  text-align: center;
-  color: white;
-  margin: auto;
-  width: 100px;
-}
-.copyright{
-  text-align: center;
-}
-.footer-container ul{
-  text-align: center;
-  margin: auto;
+.recipe-banner{
+  height: 350px;
+  width: 100%;
+  background-color: #000;
   color: white;
 }
-.footer-container li{
-  margin: 10px;
-  font-size: 30px;
+
+
+.recipe-banner h1{
   color: white;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  padding-top: 120px;
 }
 

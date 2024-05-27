@@ -1,11 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './css/main.css'
-import  'bootstrap/dist/css/bootstrap.min.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import Navbar from './Navbar';
+import  'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle'
 import image4 from './images/Kalyani.jpg'
 import image5 from './images/download (1).jpg'
@@ -13,12 +9,19 @@ import image6 from './images/images (2).jpg'
 import image7 from './images/images (3).jpg'
 import image8 from './images/images (4).jpg'
 import { Link } from 'react-router-dom'
+import Footer from './Footer';
+import Context from './main';
+import Loader from './Loader';
 
 
 function Home() {
 
+ const {isAuthenticated , loading , user }= useContext(Context)
+ console.log(user)
 
   return (
+
+    loading ? <Loader/>:(
   <div className="App">
   
      <Navbar/>
@@ -133,40 +136,11 @@ function Home() {
 					</div>
 				</div>
 			</section>
-{/* --------------------------Footer----------------------------- */}
-<footer id="footer"><div className="footer-container">
-					<ul className="icons"><li> <a href="https://www.linkedin.com/in/ridhi-jain-3011a8254/details/experience/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faLinkedin} />
-        </a></li></ul>
-					<ul className="icons"><li> <a href="https://www.linkedin.com/in/ridhi-jain-3011a8254/details/experience/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faInstagram} /> 
-        </a></li>
-					</ul>
-					<ul className="icons"><li> <a href="https://www.linkedin.com/in/ridhi-jain-3011a8254/details/experience/" target="_blank" rel="noopener noreferrer">
-          <FontAwesomeIcon icon={faTwitter} /> 
-        </a></li>
-					</ul>
-          </div>
-					
-          
-			</footer><div className="copyright">
-			Copyright @FlavorFusion 2023<a href="https://templated.co/"></a>.
-		</div>
 
-
-
-
-
-
-
-
-
-
-
-
+    <Footer/>
 
   </div>
-
+    )
 
 
 

@@ -1,0 +1,21 @@
+.footer-container{
+    display: flex;
+    text-align: center;
+    color: white;
+    margin: auto;
+    width: 100px;
+  }
+  .copyright{
+    text-align: center;
+  }
+  .footer-container ul{
+    text-align: center;
+    margin: auto;
+    color: white;
+  }
+  .footer-container li{
+    margin: 10px;
+    font-size: 30px;
+    color: white;
+  }
+  
