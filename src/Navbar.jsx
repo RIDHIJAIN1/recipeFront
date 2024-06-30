@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Context, server } from './main';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { FaRegHeart } from 'react-icons/fa';
 
 const Navbar = () => {
 
@@ -59,6 +60,9 @@ const Navbar = () => {
            
             <li className="nav-item">
               <Link className="nav-link" to="/admin">ADMIN</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/wishlist"> <FaRegHeart/></Link>
             </li>
           </ul>
         </div>

@@ -10,6 +10,7 @@ import Footer from './Footer.jsx';
 import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Context, { server } from './main.jsx';
+import Wishlist from './Wishlist.jsx';
 
 const App = () => {
   const { setUser, setIsAuthenticated, setLoading } = useContext(Context);
@@ -40,6 +41,7 @@ const App = () => {
         <Route path='/admin' element={<Admin />} />
         <Route path='/footer' element={<Footer />} />
         <Route path="/recipe/:id" element={<Single />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Toaster />
     </Router>
