@@ -136,7 +136,7 @@ console.log('Recipes:', recipes);
     <div>
       <div className="admin-container">
         <div className="row admin-row">
-          <h1>ADMIN PANEL</h1>
+          <h1>ADD A RECIPE</h1>
           <form encType="multipart/form-data" onSubmit={submitHandler}>
             <label htmlFor="updateRecipe">Enter Recipe Id To Update:</label>
             <input type="text" id='updateRecipe'value={recipeIdToUpdate}onChange={(e)=>setRecipeIdToUpdate(e.target.value)} />

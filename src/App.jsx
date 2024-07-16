@@ -11,6 +11,9 @@ import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import Context, { server } from './main.jsx';
 import Wishlist from './Wishlist.jsx';
+import Loader from './Loader.jsx';
+import { AuthProvider } from './AuthContext.jsx';
+import ProtectedRoute from './ProtectedRoute.jsx';
 
 const App = () => {
   const { setUser, setIsAuthenticated, setLoading } = useContext(Context);
@@ -32,19 +35,22 @@ const App = () => {
   }, [setUser, setIsAuthenticated, setLoading]);
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/recipe' element={<Recipe />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/admin' element={<Admin />} />
-        <Route path='/footer' element={<Footer />} />
-        <Route path="/recipe/:id" element={<Single />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-      </Routes>
-      <Toaster />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/recipe' element={<Recipe />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/footer' element={<Footer />} />
+          <Route path="/recipe/:id" element={<Single />} />
+       
+          <Route path="/wishlist" element={<ProtectedRoute element={Wishlist} />} />
+          <Route path='/admin' element={<ProtectedRoute element={Admin} />} />
+        </Routes>
+        <Toaster />
+      </Router>
+    </AuthProvider>
   );
 };
 

@@ -5,8 +5,8 @@
   
 } */
 
-.logincontainer a{
-    text-decoration: none;
+.logincontainer>p>a{
+    text-decoration: none !important;
     color: #45a049  !important;
 }
 
@@ -28,6 +28,11 @@
     
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logincontainer p{
+    text-decoration: none;
+    color: #45a049;
 }
 
 h2 {

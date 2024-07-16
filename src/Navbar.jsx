@@ -6,6 +6,7 @@ import { Context, server } from './main';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FaRegHeart } from 'react-icons/fa';
+import { MdPostAdd } from "react-icons/md";
 
 const Navbar = () => {
 
@@ -59,7 +60,7 @@ const Navbar = () => {
             }
            
             <li className="nav-item">
-              <Link className="nav-link" to="/admin">ADMIN</Link>
+              <Link className="nav-link" to="/admin">ADD<MdPostAdd/></Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/wishlist"> <FaRegHeart/></Link>

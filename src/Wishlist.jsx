@@ -7,8 +7,8 @@ import Footer from "./Footer";
 import axios from "axios";
 import { server } from "./main";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
+
+import { renderRecipeCard } from "./RecipeCard";
 
 const FavouriteRecipes = () => {
   const [favouriteRecipes, setFavouriteRecipes] = useState([]);
@@ -78,32 +78,8 @@ const FavouriteRecipes = () => {
         </div>
         <div className="container-fluid">
           <div className="row">
-            {favouriteRecipes.length > 0 ? (
-              favouriteRecipes.map((recipe) => (
-                <div key={recipe._id} className="col-md-4 col-sm-6 col-xs-12">
-                  <div className="card">
-                    <div className="card-image">
-                      <img
-                        src={recipe.image}
-                        className="card-img-top"
-                        alt="Recipe"
-                      />
-                    </div>
-                    <div className="card-body">
-                      <h5 className="card-title">{recipe.title}</h5>
-                      <p className="card-text">
-                        {recipe.ingredients.length > 180
-                          ? `${recipe.ingredients.slice(0, 180)}...`
-                          : recipe.ingredients}
-                      </p>
-                      <Link to={`/recipe/${recipe._id}`} className="btn btn-dark">
-                        Watch More
-                      </Link>
-                      <button type="button" className="btn btn-dark"onClick={() => handleDeleteClick(recipe._id)}>Remove</button>
-                    </div>
-                  </div>
-                </div>
-              ))
+          {favouriteRecipes.length > 0 ? (
+              favouriteRecipes.map((recipe) => renderRecipeCard(recipe, null, true, handleDeleteClick))
             ) : (
               <p>No favourite recipes found.</p>
             )}

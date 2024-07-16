@@ -26,7 +26,7 @@ const submitHandler = async(e) => {
   console.log(name,email,password);
 
   if (password !== confirmPassword){
-    toast.error("Passwords and confirmPassword does not match")
+    toast.error("Passwords and Confirm Password must match")
     return;
   }
  
@@ -65,7 +65,7 @@ if(isAuthenticated) return <Navigate to = {"/"} />
   return (
   
     <div> 
-      <Navbar/>
+  
       <div className="signup-container">
         <h2>Signup</h2>
         <form action="/signup" method="post"onSubmit={submitHandler}>

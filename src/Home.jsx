@@ -50,7 +50,7 @@ function Home() {
               </div>
               <div className="content">
                 <header className="align-center">
-                  <p style={{fontWeight: 600}}>Shahi Paneer Recipe</p>
+                  <p style={{fontWeight: 600, fontSize:16}}>Shahi Paneer Recipe</p>
                   <p>INGREDIENTS</p>
                 </header>
                 <p>
@@ -61,7 +61,7 @@ function Home() {
                   required 1/2 cup cashews
                 </p>
                 <footer className="align-center">
-                  <Link to="/single" className="button alt">Learn More</Link>
+                  <Link to="/recipe/65f2ff221e303ef4e36278b6" className="button alt">Learn More</Link>
                 </footer>
               </div>
             </div>
@@ -78,7 +78,7 @@ function Home() {
               </div>
               <div className="content">
                 <header className="align-center">
-                  <p style={{fontWeight: 600}}>Shahi Paneer Recipe</p>
+                  <p style={{fontWeight: 600, fontSize:16}}>Shahi Paneer Recipe</p>
                   <p>INGREDIENTS</p>
                 </header>
                 <p>
@@ -89,7 +89,7 @@ function Home() {
                   required 1/2 cup cashews
                 </p>
                 <footer className="align-center">
-                  <Link to="/single" className="button alt">Learn More</Link>
+                  <Link to="/recipe/65f2ff221e303ef4e36278b6" className="button alt">Learn More</Link>
                 </footer>
               </div>
             </div>

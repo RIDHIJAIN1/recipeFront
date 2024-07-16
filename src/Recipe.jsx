@@ -7,15 +7,14 @@ import Footer from "./Footer";
 import axios from "axios";
 import { server } from "./main";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
-import { error } from "jquery";
+
+import { renderRecipeCard } from "./RecipeCard";
 
 const Recipe = () => {
   const [recipes, setRecipes] = useState([]);
   const [likedRecipes, setLikedRecipes] = useState({});
 
-  const handleLikeClick = (recipeId) => {
+  const handleLikeClick = async(recipeId) => {
     setLikedRecipes((prevLikedRecipes) => {
       const updatedLikedRecipes = {
         ...prevLikedRecipes,
@@ -100,44 +99,7 @@ const Recipe = () => {
         </div>
         <div className="container-fluid">
           <div className="row">
-            {recipes.map((recipe) => (
-              <div key={recipe._id} className="col-md-4 col-sm-6 col-xs-12">
-                <div className="card">
-                  <div className="card-image">
-                    <img
-                      src={recipe.image}
-                      className="card-img-top"
-                      alt="Recipe"
-                    />
-                  </div>
-                  <div className="card-body">
-                    <h5 className="card-title">{recipe.title}</h5>
-                    <p className="card-text">
-                      {recipe.ingredients.length > 180
-                        ? `${recipe.ingredients.slice(0, 180)}...`
-                        : recipe.ingredients}
-                    </p>
-
-                    {/* <p className="card-text-desc">{recipe.description}</p> */}
-                    <Link to={`/recipe/${recipe._id}`} className="btn btn-dark">
-                      Watch More
-                    </Link>
-                    <div
-                      className="wishlist"
-                      onClick={() => handleLikeClick(recipe._id)}
-                    >
-                      <FaRegHeart
-                        className="heartIcon"
-                        style={{
-                          fontSize: "30px",
-                          color: likedRecipes[recipe._id] ? "red" : "black",
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
+          {recipes.map((recipe) => renderRecipeCard(recipe, handleLikeClick, false))}
           </div>
         </div>
       </section>
