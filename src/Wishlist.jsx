@@ -18,16 +18,26 @@ const FavouriteRecipes = () => {
   }, []);
 
   const fetchFavouriteRecipes = async () => {
+
     try {
-      const res = await axios.get(`${server}/favourite/getfavourites`, { withCredentials: true });
-      console.log("API Response:", res.data); // Debug log
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+        throw new Error("No token found");
+      }
+      const res = await axios.get(`${server}/favourite/getfavourites`, {
+        
+        headers:{
+          Authorization: `Bearer ${token}`
+        },
+        withCredentials: true });
+
       if (res.data && res.data.recipes) {
         const recipesWithImages = await Promise.all(
           res.data.recipes.map(async (recipe) => {
-            const imageDataUrl = await arrayBufferToBase64(recipe.image.data);
+           
             return {
               ...recipe,
-              image: imageDataUrl,
+              image: `http://localhost:4000${recipe.image}`,
             };
           })
         );
@@ -41,24 +51,20 @@ const FavouriteRecipes = () => {
     }
   };
 
-  const arrayBufferToBase64 = (buffer) => {
-    return new Promise((resolve, reject) => {
-      const blob = new Blob([new Uint8Array(buffer.data)], {
-        type: buffer.contentType,
-      });
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
+
 
   const handleDeleteClick = async (recipeId) => {
-    toast.error("Removed from Wishlist");
-    axios.delete(`${server}/favourite/${recipeId}`,{withCredentials:true})
+ 
+    const token = localStorage.getItem('authToken');
+    axios.delete(`${server}/favourite/${recipeId}`,{
+      
+      headers:{
+        Authorization: `Bearer ${token}`
+      },
+      
+      withCredentials:true})
     .then((response)=>{
+      toast.error("Removed from Wishlist");
       console.log("Removed from wishlist",response.data);
       setFavouriteRecipes((prevRecipes) => prevRecipes.filter(recipe => recipe._id !== recipeId));
     })
@@ -74,7 +80,7 @@ const FavouriteRecipes = () => {
       <Navbar />
       <section id="ten" className="wrapperx style26">
         <div className="recipe-banner">
-          <h1>FAVOURITE RECIPES</h1>
+         <div className="favourite-cover"></div>
         </div>
         <div className="container-fluid">
           <div className="row">

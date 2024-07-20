@@ -42,7 +42,7 @@ try{
   }
   );
  
-
+  localStorage.setItem('authToken', data.token)
   toast.success(data.message);
   setIsAuthenticated(true);
   setLoading(false);

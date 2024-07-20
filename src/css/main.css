@@ -4487,13 +4487,17 @@ body.is-mobile .banner > article {
 
 .card {
   margin: 20px;
+  border-radius: 40px;
 }
 .card-image{
  width: 100%;
+ /* border-radius: 40px; */
 }
 
 .card-image img{
   height: 300px;
+  border-radius: 10px;
+
 }
 .card-text-desc{
   white-space: pre-line;
@@ -4539,21 +4543,28 @@ body.is-mobile .banner > article {
 }
 
 .recipe-banner{
-  height: 350px;
-  width: 100%;
-  background-color: #000;
-  color: white;
+ 
+  height: 400px; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+}
+
+.recipe-cover {
+  background-image: url(../images/food-366875_1280.jpg);
+  background-size: cover; /* This makes sure the image covers the entire div */
+  background-position: center; /* This centers the image in the div */
+  height: 100%; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+}
+.favourite-cover {
+  background-image: url(../images/anton-LzycPpUjCrY-unsplash.jpg);
+  background-size: cover; /* This makes sure the image covers the entire div */
+  background-position: center; /* This centers the image in the div */
+  height: 100%; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
 }
 
 
-.recipe-banner h1{
-  color: white;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
-  padding-top: 120px;
-}
+
 
 
 

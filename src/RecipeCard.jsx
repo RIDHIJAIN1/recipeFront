@@ -1,6 +1,9 @@
 // RecipeCard.jsx
 import { Link } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./css/main.css";
+import "bootstrap/dist/js/bootstrap.bundle";
 import React from "react";
 
 export const renderRecipeCard = (recipe, handleLikeClick, showDeleteButton, handleDeleteClick) => (

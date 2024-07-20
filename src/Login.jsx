@@ -26,14 +26,18 @@ const [password,setPassword ] = useState('');
     },
     {
       headers: {
-        "Content-Type" : "application/json"
+        "Content-Type" : "application/json",
+        
       },
       withCredentials : true,
     }
     );
     setIsAuthenticated(true)
-  
-    toast.success(data.message);
+    console.log(data.token)
+    localStorage.setItem('authToken', data.token)
+        toast.success(data.message);
+        setEmail('');  // Reset email state
+        setPassword('');  // Reset password state
     setLoading(false);
    
   }catch(error){
@@ -57,7 +61,7 @@ const [password,setPassword ] = useState('');
           <label htmlFor="password">Password:</label>
           <input type="password" id="password" name="password"value={password}onChange={(e)=>setPassword(e.target.value)}required/>
             <div className="myButton">
-            <button disabled={loading} type="submit"className="btn btn-success success-button">Submit</button>
+            <button type="submit"className="btn btn-success success-button">Submit</button>
             </div>
         </form>
 		<div className="logincontainer">

@@ -14,11 +14,11 @@ const Navbar = () => {
     e.preventDefault();
    setLoading(true)
   try{
-    await axios.get(`${server}/users/logout`,{
-      withCredentials : true,
-    }
-    );
-    
+    // await axios.get(`${server}/users/logout`,{
+    //   withCredentials : true,  
+    // }
+    // );
+    localStorage.removeItem('authToken');
     toast.success("Logged out successfully");
     setIsAuthenticated(false);
     setLoading(false);
@@ -52,8 +52,7 @@ const Navbar = () => {
               <Link className="nav-link" to="/recipe">RECIPE</Link>
             </li>
 
-            {
-              
+            {             
               isAuthenticated ?  (<button onClick={logOutHandler}className='nav-link'disabled={loading}>LOGOUT</button>):( <li className="nav-item">
               <Link className="nav-link" to="/login">LOGIN</Link>
             </li>)
@@ -64,6 +63,11 @@ const Navbar = () => {
             </li>
             <li className="nav-item">
               <Link className="nav-link" to="/wishlist"> <FaRegHeart/></Link>
+            </li>
+
+
+            <li className="nav-item">
+              <Link className="nav-link" to="/adminpanel">ADMIN</Link>
             </li>
           </ul>
         </div>

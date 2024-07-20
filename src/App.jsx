@@ -14,14 +14,30 @@ import Wishlist from './Wishlist.jsx';
 import Loader from './Loader.jsx';
 import { AuthProvider } from './AuthContext.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
+import Siderbar from './Admin/Sidebar.jsx';
+import Content from './Admin/Content.jsx';
+import User from './Admin/User.jsx';
+import Recipes from './Admin/Recipes.jsx';
+import UserRecipe from './UserRecipe.jsx';
 
 const App = () => {
   const { setUser, setIsAuthenticated, setLoading } = useContext(Context);
 
+  const getToken = ()=>{
+    localStorage.getItem('token');
+  }
+
   useEffect(() => {
+    const token = getToken();
+
+    if(token){
+
     setLoading(true);
     axios.get(`${server}/users/me`, {
       withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${token}` // Add the token to the request headers
+      }
     }).then(res => {
       setUser(res.data.user);
       setIsAuthenticated(true);
@@ -32,6 +48,7 @@ const App = () => {
       setIsAuthenticated(false);
       setLoading(false);
     });
+  }
   }, [setUser, setIsAuthenticated, setLoading]);
 
   return (
@@ -44,6 +61,10 @@ const App = () => {
           <Route path='/signup' element={<Signup />} />
           <Route path='/footer' element={<Footer />} />
           <Route path="/recipe/:id" element={<Single />} />
+          <Route path="/adminpanel" element={<Content />} />
+          <Route path="/users" element={<User/>} />
+          <Route path="/allrecipes" element={<Recipes/>} />
+          <Route path="/userRecipes" element={<UserRecipe/>} />
        
           <Route path="/wishlist" element={<ProtectedRoute element={Wishlist} />} />
           <Route path='/admin' element={<ProtectedRoute element={Admin} />} />

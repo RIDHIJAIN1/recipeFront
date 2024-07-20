@@ -11,10 +11,18 @@ import toast from "react-hot-toast";
 import { renderRecipeCard } from "./RecipeCard";
 
 const Recipe = () => {
+
   const [recipes, setRecipes] = useState([]);
   const [likedRecipes, setLikedRecipes] = useState({});
 
   const handleLikeClick = async(recipeId) => {
+
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+      toast.error("No token found");
+      return;
+    }
     setLikedRecipes((prevLikedRecipes) => {
       const updatedLikedRecipes = {
         ...prevLikedRecipes,
@@ -27,7 +35,13 @@ const Recipe = () => {
 
         axios.post(
           `${server}/favourite/addfavs`,
-          { recipeId },{withCredentials:true})
+          { recipeId },{
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            
+            withCredentials:true})
 
             .then((response) => {
               console.log("Added to wishlist", response.data);
@@ -38,7 +52,13 @@ const Recipe = () => {
         
       } else {
         toast.error("Removed from Wishlist");
-        axios.delete(`${server}/favourite/${recipeId}`,{withCredentials:true})
+        axios.delete(`${server}/favourite/${recipeId}`,{
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          
+          withCredentials:true})
         .then((response)=>{
           console.log("Removed from wishlist",response.data);
         })
@@ -60,10 +80,10 @@ const Recipe = () => {
       .then((res) => {
         console.log("API Response:", res.data);
         const recipesWithImageDataUrls = res.data.recipe.map(async (recipe) => {
-          const imageDataUrl = await arrayBufferToBase64(recipe.image.data);
+        
           return {
             ...recipe,
-            image: imageDataUrl,
+            image: `http://localhost:4000${recipe.image}`,
           };
         });
         Promise.all(recipesWithImageDataUrls).then(setRecipes);
@@ -76,29 +96,18 @@ const Recipe = () => {
 
   console.log("Recipes:", recipes);
 
-  const arrayBufferToBase64 = (buffer) => {
-    return new Promise((resolve, reject) => {
-      const blob = new Blob([new Uint8Array(buffer.data)], {
-        type: buffer.contentType,
-      });
-      const reader = new FileReader();
-      reader.onload = () => {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
-  };
+
 
   return (
     <div>
       <Navbar />
       <section id="ten" className="wrapperx style26">
-        <div className="recipe-banner">
-          <h1>RECIPES</h1>
-        </div>
+      <div className="recipe-banner">
+      <div className="recipe-cover"></div>
+    </div>
         <div className="container-fluid">
           <div className="row">
+           <br></br>
           {recipes.map((recipe) => renderRecipeCard(recipe, handleLikeClick, false))}
           </div>
         </div>
