@@ -107,7 +107,7 @@ const [loading, setLoading] = useState(false);
 
     return (
             <div>
-                <Navbar/>
+                   <Navbar/>
                 <div className="container">
                     <h1>USER RECIPES</h1>
                     <div className="row">

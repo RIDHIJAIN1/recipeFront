@@ -77,10 +77,10 @@ const FavouriteRecipes = () => {
 
   return (
     <div>
-      <Navbar />
+          <Navbar/>
       <section id="ten" className="wrapperx style26">
         <div className="recipe-banner">
-         <div className="favourite-cover"></div>
+         <div className="favourite-cover"><h1>FAVOURITES</h1></div>
         </div>
         <div className="container-fluid">
           <div className="row">

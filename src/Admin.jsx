@@ -55,88 +55,11 @@ const Admin = () => {
     }
   };
   
-  // -----------------------------updatedata----------------------------------
 
-  const updateData = async () => {
-    try {
-      setLoading(true);
-  
-      const formData = new FormData();
-      formData.append('title', title);
-      if (image) {
-        formData.append('image', image); // Only append image if it's updated
-      }
-      formData.append('description', description);
-      formData.append('ingredients', ingredients);
-      formData.append('cookTime', cookTime);
-  
-      const config = {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      };
-  
-      await axios.put(`${server}/recipe/${recipeIdToUpdate}`, formData, config);
-      toast.success("Recipe Updated Successfully");
-      setLoading(false);
-    } catch (error) {
-      console.error('Update Error:', error);
-      toast.error(error.response?.data?.message || "Error Updating Recipe");
-      setLoading(false);
-    }
-  };
-  
-  // ---------------------------------showdata-------------------------------
-
-  const fetchData=()=>{
-    axios.get(`${server}/recipe/allrecipe`,{
-      withCredentials:true,
-    })
-    .then(res=>{
-      console.log('API response:',res.data)
-      const recipesWithImageDataUrls = res.data.recipe.map(
-        
-        async recipe =>{
-        const imageURL = `http://localhost:4000${recipe.image}`
-          return{
-                 ...recipe,
-                 image: imageURL,
-          };
-        });
-      
-        Promise.all(recipesWithImageDataUrls).then(setRecipes);
-    })
-    .catch((error) => {
-      console.error('Error fetching recipes:', error);
-      toast.error(error.response.data.message);
-  });
-
-console.log('Recipes:', recipes);
-  };
-
-  useEffect(()=>{
-    fetchData()
-  },[]);
-
-  
-// --------------------------------deleteData----------------------------
-
-  const deleteData = async()=>{
-    try{
-      await axios.delete(`${server}/recipe/${idToDelete}`);
-      console.log("Recipe deleted successfully")
-      toast.success("Recipe deleted successfully");
-    }
-    catch(error){
-      toast.error('Error detecting recipe');
-      console.log('Error detecting recipe')
-    
-    }
-  }
 
   return (
     <div>
-      <Navbar/>
+  
       <div className="admin-container">
         <div className="row admin-row">
           <div className="col-md-6 col-sm-12 col-xs-12">
@@ -170,31 +93,12 @@ console.log('Recipes:', recipes);
             <label htmlFor="cookTime">Cook Time (in minutes):</label>
             <input type="number" id="cookTime" name="cookTime" min="1" value={cookTime} onChange={(e) => setCookTime(e.target.value)} /><br />
             <button disabled={loading} type="submit">Submit</button>
-            <div className="crud-buttons">
-            <button type="button"onClick={fetchData}>Show</button>
-            <button type="button" onClick={updateData}>Update</button>
-
-            <button type="button"onClick={deleteData}>Delete</button>
-            </div>
+      
           </form>
           </div>
         </div>
 
-        {/* -------------------------------------------showData------------------------------------- */}
-        <div className="show-data">
-        <div className="row">
-          {recipes.map(recipe => (
-          <div key={recipe._id} className="col-md-4 recipe-data" >
-            <div className="recipeid">{recipe._id}</div>
-            <div className="title">{recipe.title}</div>
-            <img src={recipe.image} alt="" style={{width:'300px'}}/>
-            <div className="ingredients">Ingredients:{recipe.ingredients}</div>
-            <div className="decription">Description:{recipe.description}</div>
-            <div className="cooktime">CookTime:{recipe.cookTime}</div>
-          </div>
-))}
-        </div>
-        </div>
+       
       </div>
     </div>
   );

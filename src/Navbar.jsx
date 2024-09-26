@@ -7,6 +7,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { FaRegHeart } from 'react-icons/fa';
 import { MdPostAdd } from "react-icons/md";
+import { useAuth } from './AuthContext';
 
 const Navbar = () => {
 
@@ -31,8 +32,8 @@ const Navbar = () => {
     setLoading(false);
   }
   }
-
-  const {isAuthenticated ,setIsAuthenticated , loading,setLoading}= useContext(Context);
+  // const {user} = useAuth();
+  const {isAuthenticated ,setIsAuthenticated , loading,setLoading,user}= useContext(Context);
 
   // console.log(isAuthenticated);
 
@@ -65,10 +66,11 @@ const Navbar = () => {
               <Link className="nav-link" to="/wishlist"> <FaRegHeart/></Link>
             </li>
 
-
+           {user?.isAdmin && (
             <li className="nav-item">
               <Link className="nav-link" to="/adminpanel">ADMIN</Link>
             </li>
+            )}
           </ul>
         </div>
       </div>

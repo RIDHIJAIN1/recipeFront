@@ -24,7 +24,7 @@ const App = () => {
   const { setUser, setIsAuthenticated, setLoading } = useContext(Context);
 
   const getToken = ()=>{
-    localStorage.getItem('token');
+    return localStorage.getItem('authToken');
   }
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const App = () => {
           <Route path='/signup' element={<Signup />} />
           <Route path='/footer' element={<Footer />} />
           <Route path="/recipe/:id" element={<Single />} />
-          <Route path="/adminpanel" element={<Content />} />
+          <Route path="/adminpanel" element={<ProtectedRoute element={Content} />} />
           <Route path="/users" element={<User/>} />
           <Route path="/allrecipes" element={<Recipes/>} />
           <Route path="/userRecipes" element={<UserRecipe/>} />

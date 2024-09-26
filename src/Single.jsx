@@ -48,7 +48,7 @@ const Single = () => {
 
   return (
     <div>
-      <Navbar />
+       <Navbar/>
       {recipe && (
         <section id="two" className="wrapper style2">
           <div className="container">

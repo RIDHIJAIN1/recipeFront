@@ -99,11 +99,12 @@ const Recipe = () => {
 
 
   return (
+    
     <div>
-      <Navbar />
+   <Navbar/>
       <section id="ten" className="wrapperx style26">
       <div className="recipe-banner">
-      <div className="recipe-cover"></div>
+      <div className="recipe-cover"><h1>RECIPES</h1></div>
     </div>
         <div className="container-fluid">
           <div className="row">

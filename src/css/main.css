@@ -4555,6 +4555,17 @@ body.is-mobile .banner > article {
   height: 100%; /* Adjust as needed */
   width: 100%; /* Adjust as needed */
 }
+
+.recipe-cover h1{
+  font-size: 80px;
+  color: white;
+  padding-top: 100px;
+}
+.favourite-cover h1{
+  font-size: 80px;
+  color: white;
+  padding-top: 100px;
+}
 .favourite-cover {
   background-image: url(../images/anton-LzycPpUjCrY-unsplash.jpg);
   background-size: cover; /* This makes sure the image covers the entire div */
